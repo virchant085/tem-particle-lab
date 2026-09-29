@@ -12,6 +12,8 @@
 
 本仓库是 private 测试版。测试人员需要 Windows 10/11、Python 3.12 和至少约 10 GB 可用磁盘空间；有 NVIDIA GPU 时训练更快，没有 GPU 也可使用 CPU。仓库内包含一段 26 帧样例视频，可直接检查标注界面和传统方法；正式机器学习识别需要先确认标注并训练模型。
 
+private 仓库只有受邀账号可以访问。仓库所有者可在 GitHub 的 **Settings → Collaborators → Add people** 输入测试人员的 GitHub 用户名；建议先给予普通协作者权限，不共享 GitHub 密码或访问令牌。
+
 1. 在 GitHub 仓库页面点击 **Code → Download ZIP**，解压到不含同步盘限制的本地目录；也可以使用 `git clone`。
 2. 双击 `setup_ml.cmd` 安装环境。没有 NVIDIA GPU 时，在项目目录运行 `setup_ml.cmd cpu`。
 3. 双击 `start_tracker.cmd`，浏览器会打开本机页面。页面只监听 `127.0.0.1`，不会把视频上传到外部服务。
