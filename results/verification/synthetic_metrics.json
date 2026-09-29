@@ -1,0 +1,29 @@
+{
+  "method": "supervised_yolo_bytetrack",
+  "model_id": "model_20260929_031748_33d435",
+  "model_weights_sha256": "9165fb8acedc1dfd4b6cfd17b2d2bb2b26ecb1f8105647956ff4e00e20ff9469",
+  "frames": 16,
+  "selected_ids": [
+    1
+  ],
+  "observation_rows": 16,
+  "observed_rows": 16,
+  "review_rows": 0,
+  "coverage": 1.0,
+  "coverage_is_accuracy": false,
+  "calibration": {
+    "acquisition_fps": null,
+    "nm_per_pixel": null
+  },
+  "raw_input_unchanged": true,
+  "elapsed_seconds": 6.295949599996675,
+  "coordinate_definition": "raw learned detector bounding-box center; Kalman positions retained only as association diagnostics",
+  "confidence_kind": "detector score; not calibrated correctness probability",
+  "model_qualification": "synthetic_workflow_test",
+  "accuracy_metrics": {
+    "HOTA": null,
+    "IDF1": null,
+    "MOTA": null
+  },
+  "note": "Selected trajectory identity accuracy requires independent tracking annotations"
+}

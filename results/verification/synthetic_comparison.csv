@@ -1,0 +1,4 @@
+method,observed_rows,requested_rows,coverage,coverage_is_accuracy
+bytetrack,16,16,1.0,False
+trackpy,16,16,1.0,False
+legacy_kalman_hungarian,16,16,1.0,False

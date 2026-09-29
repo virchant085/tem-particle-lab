@@ -1,0 +1,54 @@
+schema_version: 1
+seed: 17
+model:
+  architecture: yolo26n.pt
+  task: detect
+  class_names: [particle]
+training:
+  epochs: 60
+  imgsz: 640
+  batch: 4
+  patience: 15
+  workers: 0
+  device: auto
+  optimizer: AdamW
+  lr0: 0.001
+  weight_decay: 0.0005
+  deterministic: true
+  amp: true
+  mosaic: 0.0
+  mixup: 0.0
+  degrees: 15.0
+  translate: 0.05
+  scale: 0.20
+  fliplr: 0.5
+  flipud: 0.5
+  hsv_h: 0.0
+  hsv_s: 0.0
+  hsv_v: 0.15
+dataset:
+  split_mode: experiment
+  validation_fraction: 0.25
+  temporal_gap_frames: 2
+inference:
+  confidence: 0.10
+  iou: 0.40
+  imgsz: 640
+  max_det: 500
+  batch: 1
+association:
+  method: bytetrack
+  track_high_thresh: 0.40
+  track_low_thresh: 0.10
+  new_track_thresh: 0.50
+  track_buffer: 3
+  match_thresh: 0.80
+  fuse_score: false
+  point_search_range: 28.0
+  point_memory: 2
+  background_compensation: false
+  max_link_step_px: 50.0
+selection:
+  mode: selected
+  max_anchor_distance_px: 35.0
+  history: 50

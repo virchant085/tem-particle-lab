@@ -1,0 +1,20 @@
+{
+  "python": "3.12.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "packages": {
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "pandas": "3.0.6",
+    "opencv-python-headless": "5.0.0.93",
+    "opencv-python": null,
+    "trackpy": "0.7",
+    "matplotlib": "3.11.2",
+    "PyYAML": "6.0.3",
+    "torch": null,
+    "ultralytics": null,
+    "imageio-ffmpeg": "0.6.0"
+  },
+  "opencv": "5.0.0",
+  "device": "cpu",
+  "cuda_used": false
+}

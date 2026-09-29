@@ -1,0 +1,2 @@
+# Exact versions used for the included experiment; Python 3.12.
+-r requirements-lock.txt

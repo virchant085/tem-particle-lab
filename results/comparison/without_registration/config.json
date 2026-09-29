@@ -1,0 +1,72 @@
+{
+  "seed": 17,
+  "preprocessing": {
+    "gaussian_sigma": 2.0,
+    "clahe": false
+  },
+  "tracker": {
+    "type": "template",
+    "search_range": 28,
+    "memory": 2,
+    "min_ncc": 0.55,
+    "min_peak_margin": 0.025,
+    "min_contrast": 4.0,
+    "max_backward_error": 12.0,
+    "refine_center": true,
+    "max_refine_shift": 6.0,
+    "refine_fraction": 0.75,
+    "conflict_fraction": 0.5,
+    "lk_window": 61,
+    "lk_max_level": 2,
+    "lk_max_fb_error": 2.5
+  },
+  "detector": {
+    "type": "trackpy",
+    "diameter": 61,
+    "minmass": 13000,
+    "separation": 39,
+    "percentile": 65,
+    "exclude_top_px": 40,
+    "exclude_bottom_px": 45,
+    "model": null,
+    "confidence": 0.25,
+    "iou": 0.3
+  },
+  "legacy": {
+    "cost": "iou_area",
+    "iou_weight": 0.7,
+    "area_weight": 0.3,
+    "threshold": 0.7,
+    "max_age": 15,
+    "process_noise": 0.03,
+    "measurement_noise": 1.0
+  },
+  "registration": {
+    "enabled": false,
+    "method": "ecc",
+    "roi_fraction": [
+      0.52,
+      0.08,
+      0.98,
+      0.79
+    ],
+    "min_phase_response": 0.25,
+    "min_ecc": 0.3,
+    "max_step": 6.0,
+    "max_method_disagreement": 3.0
+  },
+  "calibration": {
+    "acquisition_fps": null,
+    "nm_per_pixel": null
+  },
+  "output": {
+    "history": 50,
+    "circle_thickness": 2,
+    "trajectory_thickness": 2,
+    "show_ids": true,
+    "show_bbox": false,
+    "draw_uncertain": false,
+    "video": true,
+    "max_memory_mb": 1024
+  }
+}

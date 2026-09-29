@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "selection_note": "User confirmed reference IDs 1,2,3,4,6,7. ID 5 requires new center; ID 8 uncertain. Both excluded.",
+  "calibration_note": "User requested pixel/video-time output for now; acquisition_fps and nm_per_pixel pending. Overlay 0.0-5.0 s differs from container 1 fps. Do not auto-calibrate.",
+  "particles": [
+    {
+      "x": 147.0,
+      "y": 128.0,
+      "radius": 31.0,
+      "id": 1,
+      "frame": 0
+    },
+    {
+      "x": 187.0,
+      "y": 188.0,
+      "radius": 31.0,
+      "id": 2,
+      "frame": 0
+    },
+    {
+      "x": 122.0,
+      "y": 245.0,
+      "radius": 35.0,
+      "id": 3,
+      "frame": 0
+    },
+    {
+      "x": 103.0,
+      "y": 319.0,
+      "radius": 36.0,
+      "id": 4,
+      "frame": 0
+    },
+    {
+      "x": 59.0,
+      "y": 386.0,
+      "radius": 40.0,
+      "id": 6,
+      "frame": 0
+    },
+    {
+      "x": 43.0,
+      "y": 456.0,
+      "radius": 39.0,
+      "id": 7,
+      "frame": 0
+    }
+  ]
+}

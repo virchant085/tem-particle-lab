@@ -1,0 +1,66 @@
+{
+  "association": {
+    "background_compensation": false,
+    "fuse_score": false,
+    "match_thresh": 0.8,
+    "max_link_step_px": 50.0,
+    "method": "bytetrack",
+    "new_track_thresh": 0.12,
+    "point_memory": 2,
+    "point_search_range": 28.0,
+    "track_buffer": 3,
+    "track_high_thresh": 0.1,
+    "track_low_thresh": 0.05
+  },
+  "dataset": {
+    "split_mode": "experiment",
+    "temporal_gap_frames": 2,
+    "validation_fraction": 0.25
+  },
+  "inference": {
+    "batch": 1,
+    "confidence": 0.05,
+    "imgsz": 128,
+    "iou": 0.4,
+    "max_det": 500
+  },
+  "model": {
+    "architecture": "yolo26n.pt",
+    "class_names": [
+      "particle"
+    ],
+    "task": "detect"
+  },
+  "schema_version": 1,
+  "seed": 17,
+  "selection": {
+    "history": 50,
+    "max_anchor_distance_px": 35.0,
+    "mode": "selected"
+  },
+  "training": {
+    "amp": false,
+    "batch": 4,
+    "degrees": 15.0,
+    "deterministic": true,
+    "device": "auto",
+    "epochs": 20,
+    "fliplr": 0.5,
+    "flipud": 0.5,
+    "hsv_h": 0.0,
+    "hsv_s": 0.0,
+    "hsv_v": 0.15,
+    "imgsz": 128,
+    "lr0": 0.001,
+    "mixup": 0.0,
+    "mosaic": 0.0,
+    "nbs": 4,
+    "optimizer": "AdamW",
+    "patience": 0,
+    "scale": 0.2,
+    "translate": 0.05,
+    "warmup_epochs": 0.0,
+    "weight_decay": 0.0005,
+    "workers": 0
+  }
+}

@@ -1,0 +1,16 @@
+.venv/
+.venv-ml/
+work/
+outputs/
+data/learning/
+data/datasets/
+models/
+results/learning/
+__pycache__/
+*.pyc
+.pytest_cache/
+data/imported/
+results/manual_*/
+results/server*.log
+models/*.pt
+models/*.pth

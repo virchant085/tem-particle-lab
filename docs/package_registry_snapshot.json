@@ -1,0 +1,51 @@
+[
+  {
+    "package": "torch",
+    "version": "2.14.0",
+    "requires_python": ">=3.10",
+    "released": "2026-09-02T13:42:48.266558Z",
+    "source": "https://pypi.org/project/torch/"
+  },
+  {
+    "package": "ultralytics",
+    "version": "8.4.164",
+    "requires_python": ">=3.8",
+    "released": "2026-09-27T18:00:34.238456Z",
+    "source": "https://pypi.org/project/ultralytics/"
+  },
+  {
+    "package": "opencv-python-headless",
+    "version": "5.0.0.93",
+    "requires_python": ">=3.6",
+    "released": "2026-07-02T05:50:09.627740Z",
+    "source": "https://pypi.org/project/opencv-python-headless/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "requires_python": ">=3.12",
+    "released": "2026-08-21T23:23:44.522812Z",
+    "source": "https://pypi.org/project/scipy/"
+  },
+  {
+    "package": "trackpy",
+    "version": "0.7",
+    "requires_python": ">=3.8",
+    "released": "2025-07-18T10:49:32.836533Z",
+    "source": "https://pypi.org/project/trackpy/"
+  },
+  {
+    "package": "deeptrack",
+    "version": "2.0.2",
+    "requires_python": ">=3.9",
+    "released": "2026-08-05T14:35:01.396151Z",
+    "source": "https://pypi.org/project/deeptrack/"
+  },
+  {
+    "package": "norfair",
+    "version": "2.3.0",
+    "requires_python": "<4.0,>=3.8",
+    "released": "2025-04-30T17:25:15.899720Z",
+    "source": "https://pypi.org/project/norfair/"
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "software_tests": "19 passed in both original and current-workspace environments",
+  "video_decoded_frames": 26,
+  "csv_rows": 156,
+  "observed_rows": 131,
+  "missing_rows_without_coordinates": 25,
+  "source_hashes_match": true,
+  "calibration_remains_unset": true,
+  "controlled_variants_completed": 14,
+  "unavailable_YOLO_experiment_marked_not_run": true,
+  "browser_result_downloads_bytes": {
+    "annotated.mp4": 4727734,
+    "tracks.csv": 53813,
+    "track_statistics.csv": 647,
+    "review_required.csv": 9276,
+    "trajectories.png": 797395
+  },
+  "ui_review": "Verified run, frame navigation, same-ID manual anchor, undo and six-ID restoration in browser"
+}

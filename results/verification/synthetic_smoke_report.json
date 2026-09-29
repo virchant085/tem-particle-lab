@@ -1,0 +1,71 @@
+{
+  "status": "passed",
+  "purpose": "software_training_inference_export_smoke_only",
+  "tem_accuracy_validated": false,
+  "source_project": "<local-project-root>",
+  "model_id": "model_20260929_031748_33d435",
+  "hardware": {
+    "device": 0,
+    "cuda_used": true,
+    "cuda_available": true,
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "torch": "2.14.0+cu130",
+    "torchvision": "0.29.0+cu130",
+    "cuda_runtime": "13.0",
+    "python": "3.12.14"
+  },
+  "epochs_completed": 20,
+  "inference_candidates": 2,
+  "tracking_metrics": {
+    "method": "supervised_yolo_bytetrack",
+    "model_id": "model_20260929_031748_33d435",
+    "model_weights_sha256": "9165fb8acedc1dfd4b6cfd17b2d2bb2b26ecb1f8105647956ff4e00e20ff9469",
+    "frames": 16,
+    "selected_ids": [
+      1
+    ],
+    "observation_rows": 16,
+    "observed_rows": 16,
+    "review_rows": 0,
+    "coverage": 1.0,
+    "coverage_is_accuracy": false,
+    "calibration": {
+      "acquisition_fps": null,
+      "nm_per_pixel": null
+    },
+    "raw_input_unchanged": true,
+    "elapsed_seconds": 6.295949599996675,
+    "coordinate_definition": "raw learned detector bounding-box center; Kalman positions retained only as association diagnostics",
+    "confidence_kind": "detector score; not calibrated correctness probability",
+    "model_qualification": "synthetic_workflow_test",
+    "accuracy_metrics": {
+      "HOTA": null,
+      "IDF1": null,
+      "MOTA": null
+    },
+    "note": "Selected trajectory identity accuracy requires independent tracking annotations"
+  },
+  "elapsed_seconds": 33.95026169999619,
+  "tracking_output": "tracking_verified",
+  "association_verification": "same weights; score fusion disabled for low-score detections; default now explicit false",
+  "continued_training": {
+    "status": "passed",
+    "parent_model_id": "model_20260929_031748_33d435",
+    "child_model_id": "model_20260929_112722_aedfde",
+    "epochs": 2
+  },
+  "cpu_inference": {
+    "status": "passed",
+    "candidates": 2,
+    "hardware": {
+      "device": "cpu",
+      "cuda_used": false,
+      "cuda_available": true,
+      "gpu_name": null,
+      "torch": "2.14.0+cu130",
+      "torchvision": "0.29.0+cu130",
+      "cuda_runtime": "13.0",
+      "python": "3.12.14"
+    }
+  }
+}

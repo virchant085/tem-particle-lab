@@ -1,0 +1,6 @@
+{
+  "path": "data/annotations/visual_reference.csv",
+  "sha256": "067a576bc6fd9748f85f5a8660a5b577a380ce7b68c1a63b7c1abe46be0bc7e5",
+  "evaluation_frames": "frame > 0 from supplied reference",
+  "note": "Provided example references are approximate and nonblind, not expert GT"
+}

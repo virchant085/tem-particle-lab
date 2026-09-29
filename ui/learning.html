@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TEM · 标注与学习</title><link rel="stylesheet" href="/learning.css"></head>
+<body><header><div><span class="eyebrow">TEM PARTICLE LAB</span><h1>让模型学会识别你的颗粒</h1><p>标注一次，积累为数据；训练模型，再用于新的实验视频。</p></div><a class="quiet-link" href="/manual">传统方法对照 ↗</a></header>
+<nav aria-label="工作步骤"><button data-tab="annotation" class="active">1 · 标注数据</button><button data-tab="training">2 · 训练模型</button><button data-tab="tracking">3 · 识别与追踪</button></nav>
+<div class="summary-bar"><span id="dataSummary">正在读取项目…</span><span class="pill">本机处理 · 原始视频只读</span></div>
+<main>
+<section class="card viewer" id="viewer"><div class="video-head"><label>实验视频<select id="videoSelect" aria-label="实验视频"></select></label><span id="videoMeta"></span></div>
+<div class="canvas-wrap"><canvas id="imageCanvas" aria-label="颗粒标注与选择画布" width="554" height="554"></canvas></div>
+<input type="range" id="frameSlider" aria-label="视频帧" min="0" max="25" value="0"><div class="row spread"><div class="row"><button id="previousFrame">← 上一帧</button><button id="nextFrame">下一帧 →</button></div><strong id="frameLabel">帧 0</strong></div>
+<p id="canvasHelp" class="muted">拖动鼠标框住颗粒。点击已有框可移动，拖动角点可调整大小。训练标注需要覆盖整帧所有可辨认颗粒。</p>
+<div class="row"><button id="suggestFrames">推荐下一批标注帧</button><span id="annotationBadge" class="badge">未标注</span><span id="dirtyBadge"></span></div><div id="suggestions" class="chips"></div>
+<details><summary>添加实验视频</summary><label>独立实验组名称<input id="newExperiment" placeholder="例如 实验A_温度300K"></label><div class="row"><input type="file" id="videoFile" accept="video/*,.mp4,.avi,.mov,.mkv"><button id="importVideo">导入视频</button></div><p class="muted">同一实验的不同片段使用同一个组名，便于隔离训练和验证。</p></details>
+<details><summary>当前视频的实验分组</summary><div class="row"><label>实验组<input id="experimentName"></label><label>用途<select id="videoSplit"><option value="auto">自动按实验划分</option><option value="train">训练</option><option value="val">验证</option><option value="test">独立测试</option></select></label><button id="saveVideoGroup">保存分组</button></div></details>
+</section>
+<aside class="card" id="annotationPanel"><h2>为检测模型提供标注</h2><p>类别只有一种：<b>颗粒</b>。框应贴近可辨认颗粒的外缘，尽量保持一致的标注标准。</p><div class="note" id="draftNote">首帧已有上一版 ROI 生成的建议框。请检查中心和大小，并补全其余颗粒；这些建议还不是训练标签。</div>
+<div class="row"><button id="undoBox">撤销修改</button><button id="copyPrevious">复制上一帧的框</button><button id="removeBox">删除选中框</button></div>
+<div id="boxesList" class="item-list"></div><label class="check"><input type="checkbox" id="negativeFrame">已确认整帧没有可辨认颗粒（负样本）</label>
+<button id="saveDraft" class="secondary full">保存草稿</button><button id="confirmAnnotation" class="primary full">整帧已完整标注，确认保存</button><p class="muted">只有确认完成的帧会进入训练数据。修改已确认的框后，会重新回到草稿状态。身份 ID 可留空；检测训练不需要跨帧 ID。</p><button id="exportAnnotation">导出本帧标注 JSON</button></aside>
+<section class="training-view" id="trainingPanel" hidden><div class="card"><h2>建立训练数据版本</h2><p>每个版本固定保存当时确认的标注。后续修改标注不会改变已完成的训练记录。</p><label>验证方式<select id="splitMode"><option value="experiment">按独立实验划分（推荐，至少两组实验）</option><option value="temporal">单视频试训：时间分块并隔离相邻帧</option></select></label><label>单视频试训的隔离间隔<input id="temporalGap" type="number" min="0" max="100" value="2"> 帧</label><button id="buildDataset" class="primary">创建数据版本</button><div id="datasetCards" class="records"></div></div>
+<div class="card"><h2>训练可复用的颗粒模型</h2><p>使用 YOLO26n 预训练权重进行监督微调。也可从你之前训练的颗粒模型继续学习。</p><label>数据版本<select id="datasetSelect"></select></label><label>训练起点<select id="initialModel"><option value="">官方预训练权重（首次训练）</option></select></label><div class="row"><label>训练轮数<input id="epochs" type="number" min="1" max="1000" value="60"></label><label>每批图像<input id="batch" type="number" min="1" max="32" value="4"></label><label>图像尺寸<select id="imageSize"><option>640</option><option>512</option><option>768</option><option>960</option></select></label></div><button id="trainModel" class="primary full">开始训练并验证</button><p class="muted">标注很少时可先试训以检查流程。对新实验是否有效，要看独立实验数据上的验证结果。</p></div>
+<div class="card wide"><h2>模型版本与验证结果</h2><div id="modelCards" class="records"></div></div></section>
+<aside class="card" id="trackingPanel" hidden><h2>模型先识别，你选择目标</h2><label>颗粒识别模型<select id="modelSelect"></select></label><div id="modelQualification" class="note"></div><div class="row"><button id="previewDetections" class="primary">识别当前帧</button><button id="activateModel">设为默认模型</button></div><p>橙色框是模型候选。点击需要追踪的框，选中后显示绿色圆圈。每次运行只输出你选定的颗粒。</p>
+<label>点击候选框的操作<select id="selectionMode"><option value="new">新增跟踪目标</option></select></label><div id="selectedList" class="item-list"></div><button id="clearSelected">清空跟踪选择</button><button id="usePredictions">把当前识别框作为标注草稿</button>
+<label>新目标最低检测分<input id="newTrackScore" type="number" min="0.11" max="1" step="0.01" value="0.50"></label><p class="muted">较低分数允许选择更多候选，也可能增加误检。请根据验证结果调整；检测分不是正确概率。</p>
+<details><summary>追踪与物理标定</summary><label>关联方法<select id="association"><option value="bytetrack">ByteTrack（默认）</option><option value="trackpy">Trackpy 中心关联（对照）</option></select></label><div class="row"><label>采集帧率 fps<input id="acquisitionFps" type="number" min="0" step="any" placeholder="未标定"></label><label>像素尺寸 nm/px<input id="pixelSize" type="number" min="0" step="any" placeholder="未标定"></label></div><p class="muted">未确认标定时留空。视频播放帧率不自动当作采集帧率。</p></details>
+<button id="runTracking" class="primary full">追踪所选颗粒并导出</button><div id="resultLinks" class="chips"></div><div id="trackingReview" class="muted"></div></aside>
+</main>
+<section class="job-bar" aria-live="polite"><div class="row spread"><div><strong id="jobTitle">准备就绪</strong><div id="status" role="status">请先完善并确认若干帧的颗粒标注。</div></div><button id="cancelJob" hidden>停止当前任务</button></div><progress id="jobProgress" max="100" value="0" hidden></progress><a id="jobLog" target="_blank" hidden>查看任务日志</a></section>
+<script src="/learning.js"></script></body></html>

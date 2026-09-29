@@ -1,0 +1,19 @@
+{
+  "reference_points": 48,
+  "observed_reference_points": 46,
+  "coverage": 0.9583333333333334,
+  "mean_center_error_px": 7.0563909640743905,
+  "median_center_error_px": 6.440371919828513,
+  "p95_center_error_px": 15.567217559817033,
+  "success_within_tolerance": 0.8541666666666666,
+  "tolerance_px": 12,
+  "HOTA": null,
+  "IDF1": null,
+  "MOTA": null,
+  "evaluation_scope": "selected identity point localization; human/assistant reference provenance must be supplied",
+  "variant": "strict_backward_4px",
+  "status": "completed",
+  "all_frame_coverage": 0.7307692307692307,
+  "seconds": 1.0494359000003897,
+  "reference_provenance": "assistant approximate visual references; nonblind early frames only"
+}
