@@ -24,6 +24,15 @@
 <label>新目标最低检测分<input id="newTrackScore" type="number" min="0.11" max="1" step="0.01" value="0.50"></label><p class="muted">较低分数允许选择更多候选，也可能增加误检。请根据验证结果调整；检测分不是正确概率。</p>
 <details><summary>追踪与物理标定</summary><label>关联方法<select id="association"><option value="bytetrack">ByteTrack（默认）</option><option value="trackpy">Trackpy 中心关联（对照）</option></select></label><div class="row"><label>采集帧率 fps<input id="acquisitionFps" type="number" min="0" step="any" placeholder="未标定"></label><label>像素尺寸 nm/px<input id="pixelSize" type="number" min="0" step="any" placeholder="未标定"></label></div><p class="muted">未确认标定时留空。视频播放帧率不自动当作采集帧率。</p></details>
 <button id="runTracking" class="primary full">追踪所选颗粒并导出</button><div id="resultLinks" class="chips"></div><div id="trackingReview" class="muted"></div></aside>
+<section class="card time-trace-panel" id="timeTracePanel" hidden aria-labelledby="timeTraceTitle">
+<div class="row spread"><div><h2 id="timeTraceTitle">时间轨迹与圆圈残影</h2><p>把已追踪颗粒的中心路径和不同时间的定位圆圈，汇总在同一张实验图中。</p></div><span class="pill">读取已有追踪结果</span></div>
+<div class="trace-controls"><label class="trace-source">追踪结果来源<select id="traceResultSelect" disabled><option value="">正在读取追踪结果…</option></select></label>
+<fieldset id="traceOptions" disabled><legend>绘图范围</legend><div class="row spread"><span class="muted">需要显示的颗粒</span><div class="row"><button id="traceSelectAll" type="button">全选</button><button id="traceSelectNone" type="button">清空</button></div></div><div id="traceIds" class="trace-id-list" aria-label="需要显示的颗粒"></div>
+<div class="row trace-range"><label>起始帧（包含）<input id="traceFrameStart" type="number" min="0" step="1" value="0"></label><label>结束帧（包含）<input id="traceFrameEnd" type="number" min="0" step="1" value="0"></label><label>圆圈间隔（帧）<input id="traceCircleInterval" type="number" min="1" step="1" value="5"></label></div></fieldset></div>
+<div class="trace-explanation"><div class="trace-legend"><span>较早</span><span class="trace-gradient" aria-hidden="true"></span><span>较晚</span></div><p>所有颗粒共用蓝 → 青 → 黄的帧号时间刻度；背景固定为所选范围首帧。圆圈表示当时的定位范围，不是颗粒真实轮廓；缺测与人工重新定位处断线。本图使用帧号与原始像素，不进行物理标定或背景漂移修正。</p></div>
+<div class="row"><button id="generateTimeTrace" class="primary" disabled>生成时间痕迹图</button><span id="traceStatus" class="muted" role="status" aria-live="polite">正在读取追踪结果…</span></div>
+<figure id="traceFigure" class="trace-figure" hidden><img id="traceImage" alt="颗粒中心路径与圆圈残影，颜色表示帧号先后"><figcaption id="traceCaption" class="muted"></figcaption><div class="chips"><a id="traceOpenImage" target="_blank" rel="noopener">查看原图 ↗</a><a id="traceDownloadImage" download="particle_time_traces.png">下载 PNG</a><a id="traceDownloadMetadata" download="particle_time_traces.json">下载绘图记录 JSON</a></div></figure>
+</section>
 </main>
 <section class="job-bar" aria-live="polite"><div class="row spread"><div><strong id="jobTitle">准备就绪</strong><div id="status" role="status">请先完善并确认若干帧的颗粒标注。</div></div><button id="cancelJob" hidden>停止当前任务</button></div><progress id="jobProgress" max="100" value="0" hidden></progress><a id="jobLog" target="_blank" hidden>查看任务日志</a></section>
 <script src="/learning.js"></script></body></html>

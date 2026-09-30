@@ -105,6 +105,9 @@ class LearningService:
         if path=='/api/lab/result':
             video=valid_id(value('video'));model=valid_id(value('model'));self.store.video(video)
             return read_json(self.store.root/'last_results'/f'{video}_{model}.json'),'application/json'
+        if path=='/api/lab/trace-results':
+            from .trace_results import list_trace_results
+            return list_trace_results(self.project,self.store,value('video')),'application/json'
         raise ValueError('未知学习接口')
 
     def post(self, path: str, query: dict, body: bytes):
@@ -116,6 +119,9 @@ class LearningService:
             temporary=directory/(uuid.uuid4().hex+suffix);temporary.write_bytes(body)
             return self.store.register(temporary,query.get('experiment',['new_experiment'])[0],name)
         data=json.loads(body)
+        if path=='/api/lab/time-traces':
+            from .trace_results import export_time_traces
+            return export_time_traces(self.project,self.store,data)
         if path=='/api/lab/annotation':
             return self.store.save_annotation(data['video_id'],int(data['frame']),data['boxes'],bool(data.get('reviewed')),
                                               bool(data.get('negative_confirmed')),data.get('revision'))

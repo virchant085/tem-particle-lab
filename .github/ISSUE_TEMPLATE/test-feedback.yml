@@ -22,6 +22,7 @@ body:
         - 模型识别
         - 选择与追踪目标
         - 导出视频或 CSV
+        - 时间轨迹与圆圈残影
         - 其他
     validations:
       required: true
