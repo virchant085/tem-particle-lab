@@ -9,4 +9,3 @@ assert.equal(vm.runInContext('dirty',c),true);assert.equal(vm.runInContext('boxe
 vm.runInContext(`boxes.push({id:'b',x1:90,y1:10,x2:140,y2:80,instance_id:1});renderBoxes();`,c);
 let input=elements.get('boxesList').children[0].children[1];input.value='1';input.onchange();assert.equal(vm.runInContext('boxes[0].instance_id',c),null);assert.match(elements.get('status').textContent,/重复/);
 console.log('PASS: select without dirty/history, real move, undo, duplicate ID rejection');
-
