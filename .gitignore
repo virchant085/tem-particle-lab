@@ -14,3 +14,7 @@ results/manual_*/
 results/server*.log
 models/*.pt
 models/*.pth
+
+# Local environment migration backups and downloaded weights
+.venv*.migration-backup/
+weights/
